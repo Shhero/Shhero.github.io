@@ -1,0 +1,89 @@
+html,body,div,span,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,a,address,em,img,ol,ul,li,fieldset,form,label,legend,table,tbody,tfoot,thead,tr,th,td,i,b,s{margin:0;padding:0;border:0;font-family:Helvetica,Arial}
+ul,ol{list-style:none}
+body,html{background-color: #fdeb01;overflow: hidden;width: 100%;height: 100%;}
+.loading{
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+}
+.loading-wrap{
+	position: absolute;;
+	top: 30%;
+	left: 50%;
+	margin-left: -50px;
+}
+.loading-pic{
+	width: 80px;
+	height: 80px;
+	background: url(../css/loading-9e89d30682.png) no-repeat 0 0 /cover;
+	position: absolute;
+	left: 10px;
+	top: 10px;
+}
+.loading-text{
+	text-align: center;
+}
+	/*<div class="home">
+		<div class="title"></div>
+		<div class="subtitle"></div>
+		<div class="entitle"></div>
+		<div class="hand-wrap">
+			
+		</div>
+	</div>*/
+.home{
+	display: none;
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+}
+.home .title{
+	width: 519px;
+	height: 77px;
+	position: absolute;
+	left: 60px;
+	top: 40px;
+	background: url(../css/title-33f49f72e7.png) no-repeat 0 0 /cover;
+	display: none;
+}
+.home .subtitle{
+	width: 524px;
+	height: 102px;
+	position: absolute;
+	left: 55px;
+	top: 137px;
+	background: url(../css/subtitle-85e25c70f3.png) no-repeat 0 0 /cover;
+	display: none;
+}
+.home .entitle{
+	width: 531px;
+	height: 45px;
+	position: absolute;
+	left: 51px;
+	top: 266px;
+	background: url(../css/entitle-f10fc046b6.png) no-repeat 0 0 /cover;
+	display: none;
+}
+.home .hand-wrap{
+	width: 611px;
+	height: 749px;
+	position: absolute;
+	bottom:0;
+	left: 0;
+	background: url(../css/hand-2c59a2eaab.png) no-repeat 0 0 /cover;
+	display: none;
+	animation:shake-wrap 2s linear infinite;
+	transform-origin: 40% 90%;
+}
+@keyframes shake-wrap{
+	0%{transform:rotate(0deg)}
+	10%{transform:rotate(5deg)}
+	20%{transform:rotate(-5deg)}
+	30%{transform:rotate(5deg)}
+	40%{transform:rotate(-5deg)}
+	100%{transform:rotate(0deg)}
+}

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>XMLHttp</title>
+</head>
+<body>
+     <div id="contentBox"></div>
+
+     <script>
+        function loadXMLDoc(){
+             //创建一个ajax对象
+            var XMLHttp = new XMLHttpRequest();
+              //填写请求地址
+              XMLHttp.open("GET","content.txt",true);
+              //发送请求
+              XMLHttp.send();
+              //等待服务器响应
+              XMLHttp.onreadystatechange=function(){
+                  //接收数据
+                  if(XMLHttp.readyState==XMLHttpRequest.DONE){
+                     if( XMLHttp.status==200){
+                           document.getElementById("contentBox").innerHTML=XMLHttp.responseText;
+                     }
+                     else if(XMLHttp.status==400){
+                           alert("This is an error 400")
+                     }
+                     else{
+                         alert("something else other than 200 was returned")
+                     }
+                  }
+              }   
+        }
+        loadXMLDoc();
+     
+     
+     
+     
+     </script>
+</body>
+</html>

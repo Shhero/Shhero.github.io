@@ -1,0 +1,424 @@
+body,
+div,
+p,
+ul,
+ol,
+dl,
+dt,
+dd,
+li,
+form,
+input,
+table,
+th,
+td,
+img,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: #fff;
+    color: #000;
+    font-size: 12px;
+    font-style: normal;
+    font-family: "Microsoft Yahei";
+}
+
+p {
+    line-height: 1.6
+}
+
+em,
+b,
+i {
+    font-style: normal;
+}
+
+img {
+    border: none;
+}
+
+a {
+    text-decoration: none;
+    color: #000;
+}
+
+a:hover {
+    text-decoration: none;
+    color: #cc0000;
+}
+
+li {
+    list-style: none;
+}
+
+table {
+    border-spacing: 0;
+    border-collapse: collapse;
+}
+
+.flt {
+    float: left;
+}
+
+
+.frt {
+    float: right;
+}
+
+
+/*清除浮动*/
+
+.clearfix {
+    *zoom: 1;
+}
+
+.clearfix:before,
+.clearfix:after {
+    display: table;
+    line-height: 0;
+    content: "";
+}
+
+.clearfix:after {
+    clear: both;
+}
+
+.module-content {
+    width: 1200px;
+    margin: 0 auto;
+}
+
+
+
+.nav-wrap{
+     background:#9b0000 url(../images/nav-bg.jpg) repeat-x;
+     height: 36px;
+     border-top: 1px solid #9c1900;
+     border-bottom: 1px solid #8a1501;
+}
+
+#nav{
+    height: 36px;
+    width: 980px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 99;
+}
+
+.navbar{
+    height: 36px;
+    position: relative;
+    padding-left: 210px;
+}
+
+.navbar .navbt{
+    position: absolute;
+    background: url(../images/navbt.jpg) no-repeat;
+    width: 105px;
+    height: 30px;
+    top: 3px;
+    right: 10px;
+    float: none;
+    line-height: 30px;
+    font-size: 14px;
+    padding: 0;
+    border: none;
+}
+
+.navbar a{
+    text-align: center;
+    color: #fff;
+    float: left;
+    line-height: 36px;
+    font-size: 15px;
+    padding: 0 15px;
+    position: relative;
+    border-left: 1px solid #a52600;
+    border-right: 1px solid #931900;
+}
+
+a.navbt span{
+   background: url(../images/iconmap.jpg) no-repeat 1px 3px;
+   padding-left: 18px;
+}
+
+.navbar a.navbt:hover span{
+    background-image:  url(../images/iconmap-hover.jpg);
+}
+
+.navbar a.navbt:hover{
+    background: transparent url(../images/navbt-hover.jpg) no-repeat;
+}
+
+
+.navbar a:hover{
+    background-color: #8d1e01;
+    color: #fff;
+}
+
+
+.navbar a.current{
+    background-color: #6c1500;
+    border-right: 1px solid #6c1500;
+    box-shadow: 0 0 10px #4f0000 inset;
+}
+
+.pros{
+    position: absolute;
+    top: -1px;
+    left: 0;
+    width: 210px;
+    z-index: 1000;
+    background-color: #d03322;
+    background: rgba(208, 51, 34, .85);
+    
+}
+
+.subpage h2{
+    background: url(../images/icon-dropdown.jpg) no-repeat 122px center;
+    cursor: pointer;
+}
+
+
+.pros h2{
+    width: 194px;
+    height: 38px;
+    line-height: 38px;
+    color: #fff;
+    font-weight: 400;
+    padding-left: 16px;
+    font-size: 16px;
+}
+
+.prosul{
+    width: 207px;
+    height: 414px;
+    padding-left: 3px;
+    margin-top: 2px;
+}
+
+.prosul li{
+    height: 50px;
+    line-height: 50px;
+    border-bottom: 1px dashed #bb2d1e;
+    padding-left: 38px;
+    margin-right: 3px;
+}
+
+.prosul li a{
+    color: #ffd0c0;
+    padding-right: 8px;
+    white-space: nowrap;
+    height: 50px;
+    display: inline-block;
+}
+
+.prosul li a.ti{
+    color: #fff;
+    font-size: 14px;
+}
+
+
+
+.prosul li.prosahover a.ti{
+    color: #d03322;
+}
+.prosul li a:hover{
+    color: #d03322;
+}
+/* .prosul .ti{
+    color: #d03322;
+} */
+
+.prosul li a.hot{
+    background:url(../images/icon-hot.png) no-repeat right 8px;
+}
+
+.prosul li, .prosul i{
+  background:url(../images/iconcatg.png) no-repeat;
+}
+
+
+li.food{
+  background-position: 10px 15px;
+}
+
+li.enjoy{
+    background-position: 10px -35px;
+}
+
+li.travel{
+    background-position: 10px -185px;
+}
+
+li.life{
+    background-position: 10px -135px;
+}
+
+li.women{
+    background-position: 10px -85px;
+}
+
+li.goods{
+    background-position: 10px -235px;
+}
+
+
+.prosul li i{
+    float: right;
+    display: block;
+    width: 3px;
+    height: 50px;
+    text-indent: -999em;
+    background-position: 0 -276px;
+    padding-right: 12px;
+}
+
+
+.prosul li.hotAreas{
+    background-image: none;
+    padding-left: 12px;
+    line-height: 26px;
+    height: 106px;
+}
+
+
+.prosul li.hotAreas a{
+    height: 30px;
+    line-height: 30px;
+}
+
+.prosul li.nochild a:hover{
+    color: #fff;
+}
+.prosul li.last{
+    border-bottom: none;
+}
+
+.prosul li h2{
+    padding-left: 0;
+    font-size: 14px;
+    line-height: 40px;
+    display: inline;
+    font-weight: 400;
+}
+
+
+.prosul li.prosahover{
+    border-bottom: 1px solid #fff;
+    background-color: #fff;
+    margin-right: 0;
+    padding-right: 3px;
+}
+
+
+.prosmore{
+    position: absolute;
+    left: 210px;
+    top: 38px;
+    z-index: 999;
+    background-color: #fff;
+    padding: 15px 0 15px 15px;
+    border:2px solid #d03322;
+    border-left: none;
+    width: 214px;
+    height: 382px;
+}
+
+
+.prosul .prosmore span{
+    float: left;
+    width: 107px;
+    height: 36px;
+    line-height: 22px;
+}
+
+.prosul .prosahover a{
+    color: #636363;
+    
+}
+
+.prosul .prosmore a{
+    height: 18px;
+    line-height: 18px;
+    padding: 0 4px;
+}
+
+.prosul .prosmore a:hover{
+    background-color: #d03322;
+    color:#fff;
+}
+
+.prosmore em{
+    padding-top: 9px;
+    font-weight: 400;
+    display: inline-block;
+}
+
+.prosmore em.morehot{
+    background: url(../images/icon-hot-more.png) no-repeat right top;
+    padding-right:22px;
+}
+
+
+.hide{
+    display: none;
+}
+
+
+
+
+
+
+/* banner */
+.banner{
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+    height: 416px;
+    background: orange;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

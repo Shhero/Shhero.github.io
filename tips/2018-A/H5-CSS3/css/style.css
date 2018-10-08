@@ -1,0 +1,80 @@
+.multi-column-style{
+    -webkit-column-count: 3;
+    -webkit-column-rule: 1px solid #ddd;
+    -webkit-column-gap: 2em;
+}
+
+.box-bg{
+    width: 500px;
+    height: 200px;
+    background-color: #08c;
+    background: linear-gradient(top,  #0fc 0%, #08c 100%);
+    background: linear-gradient(linear,left top, left bottom, color-stop(0,#0fc),color-stop(100%,#08c));
+    background: -webkit-linear-gradient(top,  #0fc 0%, #08c 100%);
+}
+
+.box-bg-radical{
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    background: radial-gradient(circle 100px at 20px 10px,#fff,#08c);
+}
+
+@keyframes myAnimname{
+    0%{
+        font-size: 14px;
+        color: #fff;
+        background: #0088cc;
+    }
+    25%{
+        font-size: 16px;
+        color: #eee;
+        background: rgb(254, 116, 67);
+    }
+    50%{
+        font-size: 18px;
+        color: green;
+        background: #f00;
+    }
+    75%{
+        font-size: 20px;
+        color: #eee;
+        background: rgb(180, 0, 204);
+    }
+    100%{
+        font-size: 16px;
+        color: #fff;
+        background: #6c0;
+    }
+}
+
+
+
+.box-animname{
+    width: 300px;
+    height: 200px;
+    text-align: center;
+    line-height: 150px;
+    animation-name: myAnimname;
+    animation-duration: .5s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    animation-timing-function: ease-in-out;
+}
+
+
+.clip{
+    text-overflow: clip;
+    overflow: hidden;
+    white-space: nowrap;
+    width: 200px;
+    background: green;
+}
+
+.ellipsis{
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    width: 200px;
+    background: #0088cc;
+}

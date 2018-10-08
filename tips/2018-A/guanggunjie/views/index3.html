@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <link rel="stylesheet" type="text/css" href="../public/css/style2-0d0de27514.css">
+    <script src="../public/js/jquery-b98661369a.js"></script>  <!-- jquery,操作页面上html元素 -->
+    <script src="../public/js/velocity-db5c753c2b.js"></script> <!-- 动画库 -->
+    <script src="../public/js/velocity-f55d22cc59.ui.js"></script><!-- 动画库 -->
+    <script src="../public/js/shake-c049b18112.js"></script><!-- 摇一摇组件 -->
+   <!--  <link rel="icon" href=""> -->
+<head>
+	<title>光棍节跟谁过</title>
+</head>
+<body>
+	<div class="loading">
+		<div class="loading-wrap">
+			<canvas id="mycanvas" width="100" height="100"></canvas>
+			<div class="loading-pic"></div>
+			<div class="loading-text">100%</div>
+		</div>
+	</div>
+	<div class="home">
+		<div class="title"></div>
+		<div class="subtitle"></div>
+		<div class="entitle"></div>
+		<div class="hand-wrap">
+			 <div class="hand"></div>
+		</div>
+		<div class="shake-text"></div>
+	</div>
+	<div class="result">
+		  <div class="item">
+			  	<div class="title"></div>
+			    <div class="answer"></div>
+			    <div class="avatar-wrap">
+			    	<div class="wenhao"></div>
+			        <div class="avatar"></div>
+			    </div>
+			    <div class="hands"></div>
+			    <div class="btns"></div>
+		  </div>
+		   <div class="item">
+			  	<div class="title"></div>
+			    <div class="answer"></div>
+			    <div class="avatar-wrap">
+			    	<div class="wenhao"></div>
+			        <div class="avatar"></div>
+			    </div>
+			    <div class="hands"></div>
+			    <div class="btns"></div>
+		  </div>
+		     <div class="item">
+			  	<div class="title"></div>
+			    <div class="answer"></div>
+			    <div class="avatar-wrap">
+			    	<div class="wenhao"></div>
+			        <div class="avatar"></div>
+			    </div>
+			    <div class="hands"></div>
+			    <div class="btns"></div>
+		  </div>
+		     <div class="item">
+			  	<div class="title"></div>
+			    <div class="answer"></div>
+			    <div class="avatar-wrap">
+			    	<div class="wenhao"></div>
+			        <div class="avatar"></div>
+			    </div>
+			    <div class="hands"></div>
+			    <div class="btns"></div>
+		  </div>
+		     <div class="item">
+			  	<div class="title"></div>
+			    <div class="answer"></div>
+			    <div class="avatar-wrap">
+			    	<div class="wenhao"></div>
+			        <div class="avatar"></div>
+			    </div>
+			    <div class="hands"></div>
+			    <div class="btns"></div>
+		  </div>
+		     <div class="item">
+			  	<div class="title"></div>
+			    <div class="answer"></div>
+			    <div class="avatar-wrap">
+			    	<div class="wenhao"></div>
+			        <div class="avatar"></div>
+			    </div>
+			    <div class="hands"></div>
+			    <div class="btns"></div>
+		  </div>
+		     <div class="item">
+			  	<div class="title"></div>
+			    <div class="answer"></div>
+			    <div class="avatar-wrap">
+			    	<div class="wenhao"></div>
+			        <div class="avatar"></div>
+			    </div>
+			    <div class="hands"></div>
+			    <div class="btns"></div>
+		  </div>
+	</div>
+     <!-- share -->
+     <div class="share">
+     	   <div class="mask"></div>
+     	   <div class="share-text"></div>
+     </div>
+    <script>
+    	 
+       
+		var canvas = document.getElementById('mycanvas');
+		var context = canvas.getContext('2d') //返回一个用于在画布上绘图的环境
+		context.beginPath()//起始一条路径，或重置当前路径
+		context.moveTo(50,50);//把路径移动到画布中的指定点，不创建线条
+		context.arc(50,50,50,0,2*Math.PI,false);
+		context.closePath()//创建从当前点回到起始点的路径
+		context.fillStyle='#fff'//属性设置或返回用于填充绘画的颜色、渐变或模式。
+		context.fill()//填充当前的路径
+	function drawCircle(percent) {
+
+
+		console.log(percent)
+		context.beginPath()//起始一条路径，或重置当前路径
+		context.moveTo(50,50);//把路径移动到画布中的指定点，不创建线条
+		// context.arc(50,50,50,0+1.5*Math.PI,1.5*Math.PI+(2*Math.PI)*percent/100,false);
+		context.arc(50,50,50,1.5*Math.PI,1.5*Math.PI+(-(2*Math.PI)*percent/100),true);
+		// context.arc(50,50,50,0,-(2*Math.PI)*percent/100,true);
+		// context.arc(50,50,50,0,(2*Math.PI)*(1-percent/100)||2*Math.PI,true);
+			// context.arc(50,50,50,0,0.5*Math.PI,true);
+			// context.arc(50,50,50,0,0.5*Math.PI,false);
+		context.closePath()//创建从当前点回到起始点的路径
+		context.fillStyle='#ffa9ad'//属性设置或返回用于填充绘画的颜色、渐变或模式。
+		context.fill()//填充当前的路径
+		$('.loading-text').text(percent+'%')
+	}
+	// drawCircle()
+
+	// 加载一张图片缓存
+	// var img = new Image();
+	// 	img.src = pics[index];
+	// 	img.onload = function(){
+	// 		console.log(index);
+	// 		index++
+	// 	}
+	// 加载多张图片
+	var pics = ["../public/img/entitle-f10fc046b6.png","../public/img/hand-5697478078.png","../public/img/hand_finger-2c59a2eaab.png","../public/img/home_avatar0-4ba3f708ed.png","../public/img/home_avatar1-6e666c9f41.png","../public/img/home_avatar2-5d0d345aaf.png","../public/img/home_avatar3-17bb90a561.png","../public/img/home_avatar4-7027c27901.png","../public/img/home_avatar5-a8e40c45e8.png","../public/img/home_avatar6-11ed7b04b1.png","../public/img/home_shake_text-aa64951385.png","../public/img/loading-9e89d30682.png","../public/img/result_answer-b52317bd87.png","../public/img/result_answer0-c539ee6f78.png","../public/img/result_answer1-92801f242b.png","../public/img/result_answer2-4f31d6da3a.png","../public/img/result_answer3-22d41cb206.png","../public/img/result_answer4-10bd2d35b0.png","../public/img/result_answer6-bd885f91c6.png","../public/img/result_avatar-ebfefec7a2.png","../public/img/result_avatar_bg-d0892caaf2.png","../public/img/result_avatar_bg_1-847ddaa2c3.png","../public/img/result_avatar_bg_2-90e90a78e9.png","../public/img/result_avatar0-1e942c39c1.png","../public/img/result_avatar1-83b3aa332b.png","../public/img/result_avatar2-7132294a00.png","../public/img/result_avatar3-e321ec836b.png","../public/img/result_avatar4-b3d0413186.png","../public/img/result_avatar6-cff2ea8165.png","../public/img/result_btn-8ad12b43c0.png","../public/img/result_text-0a624175ab.png","../public/img/result_text0-fbcc663fb7.png","../public/img/result_text1-ee916b72f3.png","../public/img/result_text2-26fa528e22.png","../public/img/result_text3-fa712f4662.png","../public/img/result_text4-a37e3e4056.png","../public/img/result_text6-dd725fa99d.png","../public/img/result_title-62d28eb73c.png","../public/img/shake_tips-8a9b58ae51.png","../public/img/share-ed4b816471.jpg","../public/img/share-f36a9de4a3.png","../public/img/share0-c7f3af2a70.jpg","../public/img/share1-6e2318cb3f.jpg","../public/img/share2-4adf50f0a7.jpg","../public/img/share3-43f470bb09.jpg","../public/img/share4-8e2b600eb6.jpg","../public/img/share5-16eb2956b7.jpg","../public/img/share6-16447787c7.jpg","../public/img/subtitle-85e25c70f3.png","../public/img/title-33f49f72e7.png","../public/img/yue-0321419d01.png"]
+
+          var index = 0;
+          var count = 7;
+          var pics_length = pics.length;
+         for (var i = 0; i < pics_length;  i++) {
+         	     var img = new Image();
+         	     img.src = pics[i];
+         	     //console.log(i+"iiii");
+         	     //console.log(index+"index");
+         	     //异步之外用i，异步内部用index
+         	     img.onload = function(){//异步
+         	     	index++;
+         	     	var percent = Math.floor(index/pics_length*100);
+         	     	drawCircle(percent);
+                    if(percent==100){
+                        $('.loading').hide();
+                        $('.home').show(function(){
+                            $('.title').velocity('callout.bounce',{
+                                complete: function(){
+
+                                $('.subtitle').velocity('callout.flash',{
+                                         complete:function(){
+
+                                    $('.entitle').velocity('transition.perspectiveDownIn',{
+                                        complete:function(){
+                                            $('.hand-wrap').show();
+                                            Shake.start()
+                                            window.addEventListener('shake',function(){
+                                            	 $('.home').hide()
+                                                 var random = parseInt(Math.random()*count);//第一步随机
+                                                 console.log(random,count);
+                                                 var $t = $('.result .item:not(".noshow")').eq(random);
+                                                 //第2步加noshow 计数-1
+                                                  $t.show().siblings().hide()
+                                                  $t.addClass("noshow")
+                                                  count = count - 1;
+                                                  if(count==0){//第3步重置数据
+														count = 7
+														$('.result .item').removeClass('noshow')
+													}
+
+                                                  $('.result .item').eq(random).show().siblings().hide()
+                                                 $('.result').show(function(){
+                                                	$('.avatar-wrap').velocity({
+                                                		'rotateY':'3600deg'
+                                                	},{'duration':3000,
+                                                       complete:function(){
+									    					$('.wenhao').velocity('transition.expandOut',{
+									    						complete:function(){
+									    							$('.avatar').velocity('transition.expandIn',{display:'block'});
+									    							$('.answer').velocity('transition.bounceIn');
+
+									    						}
+
+									    					})
+														    				}
+                                                })
+                                                });
+                                            })
+                                        }
+                                    })
+                                     },display:"block"
+                                } 
+                            ) 
+                        },
+
+                        display:"block"}           
+                    )
+                            
+                            
+                        });
+                    }
+         	     }
+         }
+
+
+      $(".result").on("click",'.btns',function(){
+      	$('.share').show();
+      })
+
+      $('body').on('click','.share',function(){
+      	$('.share').hide();
+      })
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>ES6</title>
+     <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script>
+</head>
+<body>
+
+    <div id="result"></div>
+     <div id="list"></div>
+     <script>
+       //es6
+       //变量声明 用 let  和   const
+       //1 let命令  let声明的变量只在它所在的代码块有效。
+    //    {
+    //        let a = 1;
+    //        var b = 2; 
+    //    }
+    //    console.log(a);//Uncaught ReferenceError: a is not defined
+    //    console.log(b);//2
+
+
+        // for (let i = 0; i < 10; i++) {
+        //     //   
+        // }
+        //  console.log(i);//Uncaught ReferenceError: i is not defined,上面代码中，计数器i只在for循环体内有效，在循环体外引用就会报错。
+     
+//-----------------------------------------------------------------------------------------------------------------------
+
+            // var a = [];
+            // for (var i = 0; i < 10; i++) {
+            // a[i] = function () {
+            //     console.log(i);
+            // };
+            // }
+            // a[6]();//10  所有数组a的成员里面的i，指向的都是同一个i
+         
+
+            // var a = [];
+            // for (let i = 0; i < 10; i++) {
+            // a[i] = function () {
+            //     console.log(i);
+            // };
+            // }
+            // a[6]();//6  如果使用let，声明的变量仅在块级作用域内有效，最后输出的是 6。
+
+
+
+  
+            // for (let i = 0; i < 3; i++) {
+            // let i = 'abc';
+            // console.log(i);//另外，for循环还有一个特别之处，就是设置循环变量的那部分是一个父作用域，而循环体内部是一个单独的子作用域。
+            // }
+            // abc
+            // abc
+            // abc
+
+//--------------------------------------------------------------------------------------------------------------
+
+            //不存在变量提升
+
+            // var 的情况
+            // console.log(foo); // 输出undefined
+            // var foo = 2;
+
+            // let 的情况
+            // console.log(bar); // 报错ReferenceError
+            // let bar = 2;
+     
+ //-------------------------------------------------------------------------------------------------------
+          //暂时性死区 
+        //只要块级作用域内存在let命令，它所声明的变量就“绑定”（binding）这个区域，不再受外部的影响。    
+     
+        //   var temp = 123;
+        //   if(true){
+        //       temp = 'abc';//// ReferenceError  总之，在代码块内，使用let命令声明变量之前，该变量都是不可用的。这在语法上，称为“暂时性死区”
+        //       let temp;
+        //   }
+
+
+//             if (true) {
+//                 // TDZ开始
+//                 //tmp = 'abc'; // ReferenceError
+//                 //console.log(tmp); // ReferenceError
+
+//                 let tmp; // TDZ结束
+//                 console.log(tmp); // undefined
+
+//                 tmp = 123;
+//                 console.log(tmp); // 123
+//                 //上面代码中，在let命令声明变量tmp之前，都属于变量tmp的“死区”。
+// }
+
+                 //“暂时性死区”也意味着typeof不再是一个百分之百安全的操作。
+                //  console.log(typeof(x)); // ReferenceError
+                //  let x;
+                 //总之，暂时性死区的本质就是，只要一进入当前作用域，所要使用的变量就已经存在了，但是不可获取，只有等到声明变量的那一行代码出现，才可以获取和使用该变量。
+     
+  //-------------------------------------------------------------------------------------------------------------   
+
+                  //不允许重复声明    
+                  //let不允许在相同作用域内，重复声明同一个变量。
+                  // 报错     
+            //   var c =function() {
+            //         let a = 10;
+            //         var a = 1;
+            //         console.log(a);
+            //         }
+            //         c();
+
+                    // 报错  
+                    // function func() {
+                    // let a = 10;
+                    // let a = 1;
+                    // }     
+
+//==========================================================================================
+                 //ES6 的块级作用域 
+                //  function f1() {
+                //     let n = 5;
+                //     if (true) {
+                //         let n = 10;
+                //     }
+                //     console.log(n); // 5
+                //     }
+                //     f1();上面的函数有两个代码块，都声明了变量n，运行后输出 5。这表示外层代码块不受内层代码块的影响
+
+//----------------------------------------------------------------------------------------------------
+
+                //ES6 允许块级作用域的任意嵌套。
+
+                //{{{{{let insane = 'Hello World'}}}}};
+                
+
+                // {{{{
+                //     {let insane = 'Hello World'}
+                //     console.log(insane); // 报错  外层作用域无法读取内层作用域的变量
+                //     }}}};
+
+
+                  //内层作用域可以定义外层作用域的同名变量。
+                //  {{{{
+                //     let insane = 'Hello World';
+                //     {let insane = 'Hello World'}
+                //     }}}};   
+
+//-------------------------------------------------------------------------------------------------------------
+
+      //总结 const  let
+      //1`const 和 let 都是块级作用域。
+      //2`const的作用域与let命令相同：只在声明所在的块级作用域内有效。
+      //3`const命令声明的常量也是不提升，同样存在暂时性死区，只能在声明的位置后面使用
+      //4`const声明的常量，也与let一样不可重复声明。
+//------------------------------------------------------------------------------------------------------
+
+ //-----------------------------------------------------------------------------------------------------------               
+                 //const 命令  const声明一个只读的常量。一旦声明，常量的值就不能改变
+                //  const PI = 3.1415;
+                //    console.log(PI);
+                //     PI = 3;// TypeError: Assignment to constant variable.
+
+                  //const声明的变量不得改变值，这意味着，const一旦声明变量，就必须立即初始化，不能留到以后赋值。
+   
+                   
+                //const foo; //// SyntaxError: Missing initializer in const declaration
+                //上面代码表示，对于const来说，只声明不赋值，就会报错。 
+
+
+                // if (true) {
+                //         const MAX = 5;
+                //         }
+
+                //          MAX// Uncaught ReferenceError: MAX is not defined 
+                         //const的作用域与let命令相同：只在声明所在的块级作用域内有效。
+                         //const命令声明的常量也是不提升，同样存在暂时性死区，只能在声明的位置后面使用
+
+
+            //    if (true) {
+            //             console.log(MAX); // ReferenceError
+            //             const MAX = 5;
+            //             } 
+
+                  //上面代码在常量MAX声明之前就调用，结果报错。
+
+
+
+                //   var message = "Hello!";
+                //     let age = 25;
+
+                //     // 以下两行都会报错
+                //     const message = "Goodbye!";
+                //     const age = 30;   
+                    //const声明的常量，也与let一样不可重复声明。   
+
+ //------------------------------------------------------------------------------------------------------------------
+                  //模板字符串  以往用Jquery写法
+                  // $('#result').append(
+                  //   'There are' + '<b>'  + '<b>' +
+                  //    'items in your basket,' + '<em>' + 111 + '</em> are on sale!'
+                      
+                  // )
+
+
+                  //es6 写法  上面这种写法相当繁琐不方便，ES6 引入了模板字符串解决这个问题。
+                  // $('#result').append(`
+                  //     There are <b>${basket.count}<b> items in your basket, <em>${basket.Onsale}<em> are on sale!
+
+                  // `)
+
+
+                  //模板字符串（template string）是增强版的字符串，用反引号（`）标识。它可以当作普通字符串使用，也可以用来定义多行字符串，或者在字符串中嵌入变量。
+                     // 普通字符串
+                  // console.log(`In JavaScript '\n' is a line-feed.`) 
+                  // console.log(`Hello kitty '\n' in your name`);
+
+
+
+                   //// 多行字符串
+                  //  console.log( `In JavaScript this is
+                  //  not legal.`)//In JavaScript this is
+                  //                                  //not legal.
+
+                  //  console.log(`string text line 1
+                  //    string text line 2`);//string text line 1
+                                                   //string text line 2
+
+
+                   //// 字符串中嵌入变量
+                  //  let name = 'bob';  time = 'today';
+                  //  console.log(`Hello ${name}, how are you ${time}?`)//Hello bob, how are you today? 
+
+
+                  //上面代码中的模板字符串，都是用反引号表示。如果在模板字符串中需要使用反引号，则前面要用反斜杠转义。
+                  // let greeting = `\`YO\` World!`;
+                  // console.log(greeting);     //`YO` World! 
+
+
+
+                  //如果使用模板字符串表示多行字符串，所有的空格和缩进都会被保留在输出之中。
+                  // $('#list').html(`
+                  //       <ul>
+                  //         <li>first</li>
+                  //         <li>second</li>
+                  //       </ul>
+                  //   `.trim());//比如<ul>标签前面会有一个换行。如果你不想要这个换行，可以使用trim方法消除它。
+                
+
+                    //// 多行（所有的空格和缩进都会被保留在输出之中）
+                    //   const firstName = 'he';
+                    //   const qty = '10';
+                    //   const event = 'go to the zoo';
+                    //   const content = ` 
+                    //   Hello ${firstName},
+                    //   Thanks for ordering ${qty} tickets to ${event}.
+                    // `.trim();   
+                    // console.log(content);
+
+
+
+                    //模板字符串中嵌入变量，需要将变量名写在${}之中
+                      // function authority(user,action) {
+                      //     if(!user.hasPrivilege(action)){
+                      //        throw new Error(
+                      //          // 传统写法为
+                      //           // 'User '
+                      //           // + user.name
+                      //           // + ' is not authorized to do '
+                      //           // + action
+                      //           // + '.'
+
+                      //           `User ${user.name} is not authorized to do ${action}.`
+                      //        )
+                      //     }
+                      // }
+
+
+                      //大括号内部可以放入任意的 JavaScript 表达式，可以进行运算，以及引用对象属性。
+                      // let x = 1;
+                      // let y = 2;
+                      // `${x} + ${y} = ${x + y}`
+                      // console.log( `${x} + ${y} = ${x + y}`);//1 + 2 = 3
+                       //console.log(`${x} + ${y * 2} = ${x + y * 2}`); 1 + 4 = 5
+
+                      //  let obj = {x : 1, y : 2};
+                      //  console.log(`${obj.x + obj.y}`)//3
+
+
+                      //模板字符串之中还能调用函数
+                        //  function fn(){
+                        //    return "Hello World";
+                        //  }
+
+                        //  console.log(`foo ${fn()} ok`)  //foo Hello World ok
+
+                      
+                      //如果模板字符串中的变量没有声明，将报错。
+                      // 变量place没有声明
+                          //let msg = `Hello, ${place}`;
+                          // 报错
+
+                      //由于模板字符串的大括号内部，就是执行 JavaScript 代码，因此如果大括号内部是一个字符串，将会原样输出。
+                      //console.log(`Hello ${'World'}`)// "Hello World"
+
+//---------------------------------------------------------------------------------------------------------------------------
+                        //箭头函数
+                        //ES6 允许使用“箭头”（=>）定义函数.函数的快捷写法，不需要通过 function 关键字创建函数，并且还可以省略 return 关键字
+                        //  var f = v => v;
+                         //等同于
+                        //  var f = function (v) {return v };
+
+                        //如果箭头函数不需要参数或需要多个参数，就使用一个圆括号代表参数部分。
+
+                        //var f = () => 5;
+                        //等同于var f = function () {return 5};
+
+                        //var sum = (num1, num2) => (num1 + num2);
+                         //var sum = function (num1, num2) { return num1 + num2 }
+
+                         //如果箭头函数的代码块部分多于一条语句，就要使用大括号将它们括起来，并且使用return语句返回。
+                         //var sum = (num1, num2) => { return num1 + num2; }
+
+                         //由于大括号被解释为代码块，所以如果箭头函数直接返回一个对象，必须在对象外面加上括号，否则会报错。
+                         // 报错
+                        //let getTempItem = id => { id: id, name:"Temp" };
+
+                        /// 不报错
+                        //let getTempItem = id => ({ id: id, name: "Temp" });
+
+
+                        //const full = ({ first, last }) => first + ' ' + last;
+                        // 等同于
+                        // function full(person) {
+                        //   return person.first + ' ' + person.last;
+                        // }
+
+                        //箭头函数使得表达更加简洁。
+                        // const isEven = n => n % 2 == 0;
+                        // const square = n => n * n;
+
+                        //正常函数写法
+                        //   [1,2,3].map(function (x) {
+                        //     return x * x;
+                        //   });
+
+                        //  // 箭头函数写法
+                        //   [1,2,3].map(x => x * x)
+
+
+                        //箭头函数有几个使用注意点。
+
+                        // （1）函数体内的this对象，就是定义时所在的对象，而不是使用时所在的对象。
+
+                        // （2）不可以当作构造函数，也就是说，不可以使用new命令，否则会抛出一个错误。
+
+                        // （3）不可以使用arguments对象，该对象在函数体内不存在。如果要用，可以用 rest 参数代替。
+
+                        // （4）不可以使用yield命令，因此箭头函数不能用作 Generator 函数。
+                         
+
+                         //this 是如何工作的？
+
+                         var object = {
+                                        name: "Name", 
+                                        arrowGetName: () => this.name,
+                                        regularGetName: function() { return this.name },
+                                        arrowGetThis: () => this,
+                                        regularGetThis: function() { return this }
+                                    }
+
+                            console.log(this.name);
+                            console.log(object.arrowGetName());
+                            console.log(object.arrowGetThis()); //window
+                            console.log(this);//window;
+                            console.log(object.regularGetName());//Name
+                            console.log(object.regularGetThis());//ObjectarrowGetName: ()arrowGetThis: ()name: "Name"regularGetName: ()regularGetThis: ()
+
+
+         
+            
+
+
+
+
+
+
+                  
+
+     </script>
+
+
+</body>
+</html>

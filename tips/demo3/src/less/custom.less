@@ -1,0 +1,13 @@
+.make-margin-top(@min, @max, @loop) when(@min <= @max){
+    .mt@{min}{margin-top: @min * 1px}
+    .make-margin-top(@min + @loop, @max, @loop)
+}
+
+.make-margin-top(5,60,5);
+
+.make-margin-bottom(@min, @max, @loop) when(@min <= @max){
+    .mb@{min}{margin-bottom: @min * 1px}
+    .make-margin-bottom(@min + @loop, @max, @loop)
+}
+
+.make-margin-bottom(8,64,8);

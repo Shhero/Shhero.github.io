@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>数组去重</title>
+</head>
+<body>
+    <script>
+
+             //数组去重的方法    重点
+            //  var myArr = [1, 1, 2, '1', 3, 3];
+            //      function unique(arr){
+            //             var res = [];
+            //             for (let i = 0; i < arr.length; i++) {
+            //                    if(res.indexOf(arr[i]) === -1){
+            //                        res.push(arr[i]);
+            //                    }     
+            //             }
+            //             return res;
+            //      }
+            //      var myArr2 = unique(myArr);
+            //      console.log(myArr2);
+
+
+            //  var arr = [1, 1, '1', '2', 2, 2];
+            //     function unique(array) {
+            //         var res = [];
+            //         var sortArray = array.concat().sort();
+            //         var seen = null;
+            //         for (var i = 0; i < sortArray.length; i++) {
+            //                   var current = sortArray[i];
+            //                   if(!i || seen !== current){
+            //                         res.push(current)
+            //                   }
+            //                   seen = current;
+                        
+            //         }
+            //         return res;
+            //     }
+
+            //        console.log(unique(arr))
+                 
+
+
+                //  var arr = [3,2,'2',3,5,6,8,3,5,2,{value: 1}, {value: 1}, {value: 2}, {}, {}, [],[]];
+                //     function unique(arr) {
+                //         var tmp = [];
+                //         var hash = {};
+                //         for (var i = 0; i < arr.length; i++) {
+                //             var key = typeof(arr[i]) + JSON.stringify(arr[i]);
+                //              debugger
+                //             if(hash[key] !== 1) {
+                //                 tmp.push(arr[i])
+                //                 hash[key] = 1;
+                //                 debugger
+                //             }
+                //         }
+                //         return tmp;
+                //     }
+                //     console.log(unique(arr)); //[3, 2, "2", 5, 6, 8] 
+
+
+
+
+            //   var arr = [1, 1, '1', '2', 2, 2];
+
+            //     function unique(array) {
+
+            //         return array.concat().sort().filter(function (item, index, array) {
+            //             return !index || item !== array[index - 1];
+            //         })
+            //     }
+                    
+            
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+             //数组总结
+             //改变原数组方法有 push(), pop(), shift(), unshift(),sort(),reverse(),splice()
+             //不改变原数组方法有 contact(), join(), slice()
+
+             //数组连接-concat()
+             //concat() 方法用于连接两个或多个数组。此方法返回一个新数组，不改变原来的数组
+             //使用语法:array1.concat(array2, array3, ...arrayi..., arrayN);
+            //   var arr1 = new Array('hello');
+            //   var arr2 = new Array('I','love');
+            //   var arr3 = new Array('JavaScript');
+            //   console.log(arr1.concat(arr2,arr3));
+            //   console.log(arr1);
+
+
+            //数组转化成字符串-join()
+            //split()将字符串分割并返回数组；
+            //使用说明:
+            //arrayObject.join(separator);
+            //参数说明：separator 可选，指定要使用的分隔符，如省略，则使用逗号作为分隔符
+            //join() 方法用于把数组中的所有元素放入一个字符串，并返回这个字符串。元素是通过指定的分隔符进行分隔的，不影响原数组。
+            //  var arr = new Array(3);
+            //  arr[0] = 'www';
+            //  arr[1] = 'lxyweb';
+            //  arr[2] = 'com';
+            //  console.log(arr.join('.'));
+
+
+
+            //选取数组子元素-slice()
+            // slice() 方法可从已有的数组中返回一个新的数组，包含从 start 到 end （不包括该元素）的 所有元素。
+            // 使用语法：arrayObject.slice(start, end)
+            // 参数说明：star 必填，规定从何处开始选取。如果是负数，就从数组尾部开始算起始位置，比如 -1 指最后一个元素，-2 指倒数第二个元素。
+            // end 可选，规定从何处结束选取。该参数是子数组结束处的父数组下标。如果不指定，则一直选取到 arrayObject 末尾。如果为负数，则从数组尾部开始算结束位置，同 start
+            //   var arr = new Array(3);
+            //   arr[0] = 'www';
+            //   arr[1] = 'lxyweb';
+            //   arr[2] = 'com';
+            //   console.log(arr.slice(0,2));
+            //   console.log(arr)
+
+            // var arr = new Array(6)
+            // arr[0] = "George"
+            // arr[1] = "John"
+            // arr[2] = "Thomas"
+            // arr[3] = "James"
+            // arr[4] = "Adrew"
+            // arr[5] = "Martin"
+
+            // console.log((arr))
+            // console.log((arr.slice(2)))
+            // console.log((arr))
+
+
+
+            //删除/添加/替换数组中的元素-splice()
+            //splice() 方法用新元素替换旧元素，以此修改数组的内容, 返回被删除/添加/替换的元素组成的新元素。
+             //使用语法：array.splice(start, deleteCount[, item1[, item2[, ...]]])
+             //返回值:
+              //由被删除的元素组成的一个数组。如果只删除了一个元素，则返回只包含一个元素的数组。如果没有删除元素，则返回空数组。
+            //   var arr = ['a', 'b', 'c', 'x', 'z'];
+            //    arr.splice(2,3, 'o', 'p','z', 'q');//从第二个位置数0 ,1, 2,然后往后数 第一,第二,第三 个数删除掉   //['a', 'b']
+            //    console.log(arr)
+
+
+
+            //颠倒数组元素顺序-reverse()
+            //reverse() 方法用于颠倒数组中元素的顺序
+            // var myArr = new Array();
+            // myArr[0] = "www";
+            // myArr[1] = "lxyweb";
+            // myArr[2] = "com";
+            // console.log(myArr.reverse());
+
+
+
+            //数组排序-sort()
+            //sort()方法使数组中的元素按照一定的顺序排列。
+             //使用语法： arrayObject.sort (fn)
+            //参数说明：fn 方法函数可选，如果不指定方法函数，则按 unicode 码顺序排列
+
+        //     var myArr1 = new Array("Hello", "John", "love", "JavaScript");
+        //     var myArr2 = new Array("80", "16", "50", "6", "100", "1");
+        //     console.log(myArr1.sort());
+        //     console.log(myArr2.sort());
+        //     function sortNum(a,b) {
+        //         return a - b;
+        //       //升序，如降序，把“a - b”该成“b - a”
+        //    }
+        //    console.log(myArr2.sort(sortNum));
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+           //总结
+           //String对象 方法
+           //1,indexOf()
+           //2,chartAt()
+           //3,split()
+           //4,substring()方法用于提取字符串中介于两个指定下标之间的字符。区间
+           //5,substr()方法从字符串中提取从指定位置开始的指定数目的字符串.长度
+           //6,slice()提取字符串的一部分，并返回这个新的字符串。
+
+
+
+            //js内置对象
+            //字符串、数字、布尔值、undefined 以及 null 都是原始类型（primitive value）而非对象。而 String, Number, Boolean, Object 都是语言内置的对象(built-in object)，可以通过各自的构造函数得到。
+            //原始值是没有属性和方法的.
+            //如果想让原始值有属性和方法,就必须经过包装之后才能用
+            //把基本数据类型转换为对应的引用类型的操作称为装箱，比如：new String(“some string”)，将字符串 “somestring” 转换为一个 String 对象。
+
+            //对象的属性
+            // var message = 'hello world';
+            // var mlen = message.length;
+            //  console.log(mlen);
+
+            //  //对象的方法
+            //  var message = 'hello world';
+            //  var upmess = message.toUpperCase();
+            //  console.log(upmess);
+
+
+
+
+             //String对象
+            //  var mystr = 'I like Web';
+            //  var mylen = mystr.length;
+            //  var myup = mystr.toUpperCase();
+            //  var mylow = mystr.toLowerCase();
+            //  console.log('字符串的长度是:' + mylen);
+            //  console.log('字母转化为大写是:' + myup);
+
+
+            //indexOf() 方法可返回某个指定的字符串值在字符串中首次出现的位置
+            //stringObject.indexOf(substring, startpos);
+            //参数说明：substring 必填的哦，就是你想搜索的子字符串。startpos是可选填的整数参数，规定开始检索的位置，取值范围是 0 到 stringObject.length - 1。省略的话就从首字符开始检索。需要注意的是： indexOf() 方法区分大小写。
+            //如果要检索的字符串值没有出现，则该方法返回 -1。
+
+            // var mystr = 'I like JavaScript';
+            // console.log(mystr.indexOf('I'));//0
+            // console.log(mystr.indexOf('v'))//9
+            // console.log(mystr.indexOf('v', 8));//9
+            // console.log(mystr.indexOf('o'))//-1
+
+
+             //charAt() 方法可返回指定位置的字符。返回的字符是长度为 1 的字符串。
+             //使用语法：
+             //stringObject.charAt(index);
+             //index 必填，表示字符串中某个位置的数字，即字符在字符串中的下标。
+            //  var mystr = "I love JavaScript!";
+            //  console.log(mystr.charAt(7));
+
+
+             //字符串分割成数组-split()
+             //split() 方法将字符串分割为字符串数组，并返回此数组
+             //stringObject.split(separator, limit);
+             //参数说明：separator 必填，从该参数指定的地方分割 stringObject。limit 可选参数，分割的次数，如果设置，返回所以的字串,需要注意的是：如果把空字符串 “” 用作 separator，那么 stringObject 中的每个字符之间都会被分割。
+               //var mystr = 'www.lxyweb.com';
+               //console.log(mystr.split('.',2));
+               //console.log(mystr.split(''));
+
+
+            //提取字符串-substring()
+             //substring() 方法用于提取字符串中介于两个指定下标之间的字符。
+             //使用语法：
+             //stringObject.substring(starPos, stopPos);
+            //参数说明：starPos 必填，一个非负的整数，提取的开始位置； stopPos 可选参数，截取的结束位置，如果不填，那么返回的字串会一直到字符串对象的结尾。
+            //需要注意的是：
+            // 返回的内容是从 start 开始(包含 start 位置的字符)到 stop - 1 处的所有字符，其长度为 stop 减 start。
+            // 如果参数 start 与 stop 相等，那么该方法返回的就是一个空串（即长度为 0 的字符串）。
+            // 如果 start 比 stop 大，那么该方法在提取子串之前会先交换这两个参数。
+
+            //  var mystr = 'I like JavaScript';
+            //  console.log(mystr.substring(8));
+            //  console.log(mystr.substring(2,6));//不包含6位置的值
+
+
+
+            //提取指定数目的字符串-substr()
+            //substr() 方法从字符串中提取从指定位置开始的指定数目的字符串
+             //使用语法：
+             //stringObject.substr(startPos, length);
+             //参数说明：startPos 必填的哦，要提取的子串的起始位置，必须是数值；length，可选，指提取字符串的长度，如果省略，则返回从 stringObject 的开始位置 startPos 到 stringObject 的结尾的字符。
+            //需要注意的是：如果参数 startPos 是负数，从字符串的尾部开始算起的位置。也就是说，-1 指字符串中最后一个字符，-2 指倒数第二个字符，以此类推。
+            //如果 startPos 为负数且绝对值大于字符串长度，startPos 为 0。
+               // var mystr = 'I like JavaScript';
+                //console.log(mystr.substr(2,8))
+
+
+            //选区部分字符串-slice()
+            //slice() 提取字符串的一部分，并返回这个新的字符串。
+            //使用语法：
+            //str.slice(beginSlice[, endSlice])
+            //slice() 提取的新字符串包括beginSlice但     不包括 endSlice。
+            //例1：str.slice(1, 4) 提取新字符串从第二个字符到第四个 (字符索引值为 1, 2, 和 3)。 
+            //var mystr = 'I like JavaScript';
+            //console.log(mystr.slice(1,4))  //li
+
+
+
+            //写一个函数，统计字符串中出现次数最多的字符和次数
+            //var str = 'abcdaagjdaa'; 输出：{maxKey: 'a', maxNum: 5}
+            // var str = 'abcdaagjdaa';
+            // var count = 0;
+            // for (var i = 0;i < str.length;i++){
+            //        if(str[i] == 'a'){
+            //            count +=1;
+            //        }
+                  
+            // }
+            // console.log(count)
+
+            // var number = [1,2,3,4,6,4,3,2,1];
+            //  console.log(number.indexOf(1,7));//8
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            //所谓对象，带有属性和方法的数据类型，一般由若干个 “键值对”（key-value）构成;
+            // var obj = {
+            //     content : 'hello',
+            //     name: 'he',
+            //     age : 24
+            // }
+
+ 
+            //对象的书写语法，通常有3种：
+            // var obj = {};//常用
+            // var obj2 = new Object();
+            // var obj3 = Object.create(null);//用在对象继承的场合
+
+
+            //对象的引用
+            //下面代码中， obj1 和 obj2 指向同一个对象，因此为其中任何一个变量添加属性，另一个变量都可以读写该属性。
+            // var obj1 = {};
+            // var obj2 = obj1;
+            // obj1.a = 1;
+            // console.log(obj2.a)//1
+
+            // obj2.b = 2;
+            // console.log(obj1.b)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+          //数组的定义2种形式
+          //var arr = [];
+          //var arr1 = new Array();
+
+           //里面可以装任何类型的数据
+        //   var arr = ['x', 123, [1,0], function(){}, true, false,{a:1}]
+        //   arr[0];
+        //   arr[1];
+        //   arr[2];
+
+
+
+          //数组有length属性  返回的是成员数量  只要是数组就一定有length属性,而对象不一定有
+        //   var arr = [1, 2];
+        //   console.log(arr.length);
+        //   arr[2] = 3;
+        //   console.log(arr);
+        //   arr[9] = 11;
+        //   console.log(arr.length);
+        //   arr[10000] = 102;
+        //   console.log(arr.length)
+
+            // length 属性是可写的。如果人为设置一个小于当前成员个数的值，该数组的成员会自动减少到 length 设置的长度。
+            //将数组清空的一个有效办法，就是将数组的 length 属性设为 0。
+            // var arr = ['a', 'b', 'v'];
+            // console.log(arr.length);
+            // arr.length = 0;
+            // console.log(arr)
+            
+            
+
+            //数组的长度,需要注意，因为数组的索引总是由 0 开始，所以一个数组的上下限分别是： 0 和 length - 1 。如数组的长度是 5 ，数组的上下限分别是 0 和 4 。
+            //   var myarr = ['mishi', 'yueying', 'lexiaoyou', 'xiaoxin'];
+            //     console.log('我们班级有' + myarr.length + '人');
+
+            //  var myarr = new Array(6);
+            //   //console.log(myarr)
+            //   myarr[0] = 'he';
+            //   console.log('学号为0是:' + myarr[0]) 
+            //   console.log(myarr)   
+
+
+            // var myarr = new Array(3);
+            //  myarr[0] = 'he';
+            //  myarr[1] = 'mishi';
+            //  myarr[2] = 'yueying';
+            //  console.log('班级学号为0的是:' + myarr[0]);
+            //  myarr[0] = 'shihe';
+            //  console.log(myarr);
+
+
+
+            //  var myarr = ["小吉", "小雷", "小可", "小新", "月影"];
+            // var mynum = 4;
+            // console.log("学号为 4 的是：" +   myarr[mynum]  );
+
+            //  //数组嵌套
+            // var arr = [[0, 1, 2],[3, 4, 5]];
+            // arr[0][1] = 5;
+            // console.log(arr);
+
+
+
+
+
+            //时间对象
+            // var nowTime = new Date();
+            // console.log(nowTime);
+
+            // var now = new Date();
+            // now.setTime(now.getTime() + 60 * 60 * 1000);
+            // var myYear = now.getFullYear();
+            // console.log(myYear);//2018
+            // var myMonth = now.getMonth();
+            // console.log(myMonth + 1);//月份 [0, 11]，要加 1，如 7 (8 月)
+            // var myDate = now.getDate()
+            // console.log(myDate);
+            // var myHours = now.getHours();
+            // console.log(myHours);
+            // var myMinutes = now.getMinutes();
+            // console.log(myMinutes);
+            // var mySeconds = now.getSeconds();
+            // console.log(mySeconds);
+            // var myDay = now.getDay();
+            // console.log(myDay);//所指的星期中的某一天，使用本地时间。返回值是 0（周日） 到 6（周六） 之间的一个整数
+
+            // console.log('今天是' + myYear + '年' + (myMonth + 1) + '月' + myDate + '日');
+            // console.log('今天是' + myYear + '-' + (myMonth + 1) + '-' + myDate)
+
+
+
+
+            // var now = new Date();
+            // var weekday=["星期日", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六"];
+            // var mynum = now.getDay();
+            // console.log(mynum);
+            // console.log(weekday[mynum]);
+
+
+
+
+
+
+                  //Math对象
+            //Math 对象是一个可以直接使用的对象，他与其他对象的区别在于，String、Date、Number 其实都是函数，都可以当作普通函数、构造函数来用，而 Math 直接就是一个对象。
+             //Math有很多直接可用的方法，比如：
+            //   console.log(Math.PI);
+            //   console.log(Math.abs(-15));
+
+
+            // 取整方法
+            // ceil() 向上取整
+            // floor() 向下取整
+            // round() 四舍五入
+
+            // console.log(Math.ceil(0.8));//1
+            // console.log(Math.floor(13.345));//13
+            // console.log(Math.round(24.345))//24
+
+            //  //Random随机数
+            //  //random() 方法可返回介于 0 ~ 1（大于或等于 0 但小于 1 )之间的一个随机数
+            //  console.log((Math.random()) * 10);
+            //console.log(Math.max(0.5, 9.3, 3.4, -12))//9.3最大值
+  
+
+            //    var strVel = 'sdedrrrrfisosssab';
+            //       function maxNum(str) {
+            //           var obj = {};
+            //           for(var i = 0; i < str.length; i++){
+            //                 var key = str[i];
+            //                 debugger
+            //                 if(!obj[key]){
+            //                     obj[key] = 1;
+            //                 }else{
+            //                     obj[key]++;
+            //                 }
+            //           }
+            //           console.log(obj)
+            //       }
+            //       maxNum(strVel);
+
+
+
+
+
+           
+
+
+
+
+            
+
+
+
+
+
+
+
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    </script>
+</body>
+</html>

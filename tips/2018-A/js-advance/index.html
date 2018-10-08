@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>原型与原型链</title>
+</head>
+<body>
+      <script>
+          //这是一个构造函数
+          function Dog(){
+
+          }
+        Dog.prototype.foot = 4;
+        var huskey = new Dog();
+          //huskey.foot = 4;
+         huskey.eat = "fish";
+        var teddy = new Dog();
+         teddy.eat = "apple";
+         
+         console.log("-----hukey:",huskey);
+         console.log("---huskey:",huskey.foot);
+         console.log("----teddy:",teddy);
+         console.log("----teddy:",teddy.foot);
+
+
+         //构造函数
+         function Person(){
+
+         }
+        
+         Person.prototype.name = "shihe";
+          var personA = new Person();
+          var personB = new Person();
+          console.log(personA.name);
+          console.log(personB.name);
+
+         
+
+         var person = new Person();
+         console.log(person.__proto__ === Person.prototype);//true
+         console.log(Person === Person.prototype.constructor)//true 每个原型都有一个 constructor 属性指向自身所关联的构造函数。
+         console.log(Person.prototype.__proto__ === Object.prototype);//true
+         console.log(Object.prototype.__proto__ === null);//Object.prototype的原型是null
+      
+      </script>
+</body>
+</html>

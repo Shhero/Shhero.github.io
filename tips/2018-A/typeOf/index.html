@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>JS类型检测</title>
+</head>
+<body>
+     <script>
+             //检测类型 的三种方法
+             //1\typeof
+
+              //typeof用于检测基本类型，不适合Array、NaN、null
+           console.log(typeof(100));
+           console.log(typeof(undefined));
+           console.log(typeof(typeof(undefined)))//string
+            console.log(typeof(true))
+            console.log(typeof(new Object()))
+
+            console.log(typeof([1,2]))//object
+            console.log(typeof(NaN));//number
+            console.log(typeof(null));//object
+            console.log(typeof(null === 'object'));//true
+
+
+     
+            //2instanceof
+            //对于对象类型我们用instanceof更适合
+            //obj instanceof Object
+            [1, 2]instanceof Array === true;
+            new Object instanceof Array === false;
+
+
+
+            //3 Object.prototype.toString
+            //toString 是 Object 原型对象上的方法，使用 call 来调用该方法会返回调用者的类型字符串，格式为 [object,xxx]，xxx 是调用者的数据类型，
+              //包括：String、Number、Boolean、Undefined、Null、Function、Date、Array、RegExp、Error、HTMLDocument 等， 
+               //基本上，所有的数据类型都可以通过这个方法获取到。
+            Object.prototype.toString.call([]) === '[object,Array]';
+            Object.prototype.toString.call(null) === '[object,Null]';
+            Object.prototype.toString.call(undefined) === '[object,undefined]';
+
+
+
+            //constructor
+           // 当一个函数 F被定义时，JS引擎会为F添加 prototype 原型，然后再在 prototype上添加一个 constructor 属性，并让其指向 F 的引用。如下所示：
+
+             //function F() {}
+            //F.prototype
+            //当执行 var f = new F() 时，F 被当成了构造函数，f 是F的实例对象，此时 F 原型上的 constructor 传递到了 f 上，因此 f.constructor === F；
+            [].constructor === Array  // true;
+            ''.constructor === String  // true
+     
+     
+     
+     
+     
+     
+     </script>
+</body>
+</html>
